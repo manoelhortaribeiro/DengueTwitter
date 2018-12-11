@@ -1,2 +1,6 @@
 /data/*
-/experiment_tweets/*
+/experiment_tweets/out/*
+/experiment_tweets/src/*
+/experiment_tweets/xml/*
+/experiment_tweets/secrets.json
+/experiment_tweets/log.txt

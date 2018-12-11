@@ -1,0 +1,14 @@
+{
+  "pay_real_money": false,
+  "config_path": "/home/manoelribeiro/PycharmProjects/tweets_nyc/experiment_tweets/config.json",
+  "secrets_path": "/home/manoelribeiro/PycharmProjects/tweets_nyc/experiment_tweets/secrets.json",
+  "template_path": "/home/manoelribeiro/PycharmProjects/tweets_nyc/experiment_tweets/template.html",
+  "logs_path": "/home/manoelribeiro/PycharmProjects/tweets_nyc/experiment_tweets/log.txt",
+  "src_folder_path": "/home/manoelribeiro/PycharmProjects/tweets_nyc/experiment_tweets/src",
+  "xml_folder_path": "/home/manoelribeiro/PycharmProjects/tweets_nyc/experiment_tweets/xml",
+  "out_folder_path": "/home/manoelribeiro/PycharmProjects/tweets_nyc/experiment_tweets/out",
+  "control_qualifications_path": null,
+  "qualification_folder_path": null,
+  "queue_url": null,
+  "xml": "<HTMLQuestion xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2011-11-11/HTMLQuestion.xsd\"><HTMLContent><![CDATA[{0}]]></HTMLContent><FrameHeight>2000</FrameHeight></HTMLQuestion>"
+}

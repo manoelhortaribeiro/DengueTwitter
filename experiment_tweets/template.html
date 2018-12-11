@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<!-- Bootstrap v3.0.3 -->
+<link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet"/>
+<script type='text/javascript' src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.283.1.min.js"></script>
+
+<style>
+    ul li { /* targets all ul elements within an li element, itself within a ul */
+    /* overrule general 'outer' styles */
+        list-style: none;
+    }
+</style>
+
+<section class="container" id="Other" style="margin-bottom:15px; padding: 10px 10px; font-family: Verdana, Geneva, sans-serif; color:#333333; font-size:0.9em;">
+    <div class="row col-xs-12 col-md-12">
+
+        <!-- Instructions -->
+        <div class="panel panel-primary">
+            <div class="panel-heading"><p>Instructions</p></div>
+            <div class="panel-body">
+
+                <p>1. You will be given a series of texts from Tweets</p>
+
+                <p>2. Your task is to answer, for each tweet: Do you think the author of this tweet has an upset stomach today?</p>
+
+            <p>Indicatives of upset stomach include: nausea, vomiting, diarrhea, abdominal pain and fever. Quality checks will be performed on the answers.</p>
+
+            </div>
+        </div>
+        <!-- End Instructions -->
+
+        <!-- Example -->
+        <div class="panel panel-primary">
+            <div class="panel-heading"><p>Examples</p></div>
+            <div class="panel-body">
+                <p>
+                    <i>Question:</i> Stomach still making me feel like I need to puke every 30 mins but I'm here ready to seize the day!
+                </p>
+                <p>
+                    <i>Answer:</i> Yes, the author is likely to have an upset stomach today.
+                </p>
+
+                <p> <i>Question:</i> Omg this girl on the shuttle is so much vanilla that it makes me want to vomit</p>
+                <p>
+                    <i>Answer:</i> No, the author probably does not have an upset stomach today.
+                </p>
+            </div>
+        </div>
+        <!-- End Example -->
+
+    </div>
+
+    <br />
+
+    <hr />
+
+    <form name='mturk_form' method='post' id='mturk_form' action='https://www.mturk.com/mturk/externalSubmit'>
+        <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+
+
+
+        {% for tweet in tweets %}
+
+            <fieldset>
+                <div class="panel panel-default">
+                <div class="panel-heading">
+
+                <p>{{tweet["text"]}}</p>
+
+
+                <select name='{{tweet["idx"]}}'  onchange="checkSelection()" class="form-control" form="mturk_form"  id='{{tweet["idx"]}}'>
+                    <option disabled selected value> -- select an option -- </option>
+                    <option value="Y"> Yes, the author is likely to have an upset stomach today. </option>
+                    <option value="N">  No, the author probably does not have an upset stomach today. </option>
+                </select>
+                </div>
+                </div>
+            </fieldset>
+
+        {% endfor %}
+
+        <div style="text-align: center">
+        <input  disabled="disabled"  style="text-align:center" type='submit' id='submitButton' class="btn btn-primary" value='Submit'/>
+
+        </div>
+    </form>
+    </section>
+
+<script language='Javascript'>
+    turkSetAssignmentID();
+
+    function checkSelection() {
+
+        var value_form = "";
+        var are_all_filled = true;
+
+        {% for tweet in tweets %}
+
+        value_form = document.getElementById('{{tweet["idx"]}}').value;
+        are_all_filled = are_all_filled & value_form !== "";
+
+        {% endfor %}
+
+        if(are_all_filled)
+        {
+            document.getElementById("submitButton").disabled = false;
+        }
+        else {
+            document.getElementById("submitButton").disabled = true;
+        }
+    }
+
+</script>
+
+</html>
