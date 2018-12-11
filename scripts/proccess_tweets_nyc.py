@@ -67,4 +67,4 @@ for num, tweets_list in enumerate(more_itertools.chunked(rows, 20)):
     with open("./data/questions/{0}.json".format(num), "w") as f:
         json.dump({"tweets": tweets_list}, f)
 
-df.to_csv("data/tweets_processados_keywords.csv")
+df.to_csv("data/tweets_processados_keywords.tsv")
