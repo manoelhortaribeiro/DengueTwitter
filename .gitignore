@@ -4,3 +4,4 @@
 /experiment_tweets/xml/*
 /experiment_tweets/secrets.json
 /experiment_tweets/log.txt
+/nnet/logs/*

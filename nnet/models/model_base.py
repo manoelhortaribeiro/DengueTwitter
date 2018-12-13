@@ -12,7 +12,7 @@ class ModelBase(object):
 
     def __init__(self, input_size, alphabet_size, embedding_size,
                  conv_layers, fully_connected_layers, num_of_classes,
-                 threshold, dropout_p,
+                 dropout_p, threshold=None,
                  optimizer='adam', loss='categorical_crossentropy'):
 
         self.input_size = input_size
@@ -68,11 +68,11 @@ class ModelBase(object):
                                        min_lr=0.001),
                      EarlyStopping(patience=9,  # Patience should be larger than the one in ReduceLROnPlateau
                                    min_delta=0.0001)]
-        callbacks += [TensorBoard(log_dir='./logs', batch_size=batch_size, write_graph=False),
+        callbacks += [TensorBoard(log_dir='./nnet/logs/', batch_size=batch_size, write_graph=False),
                       CSVLogger('training.log', append=False)]  # Change append to true if continuing training
         # Save the BEST and LAST model
-        callbacks += [ModelCheckpoint('./backup_model_last.hdf5'),
-                      ModelCheckpoint('./backup_model_best.hdf5', save_best_only=True)]
+        callbacks += [ModelCheckpoint('./nnet/logs/backup_model_last.hdf5'),
+                      ModelCheckpoint('./nnet/logs/backup_model_best.hdf5', save_best_only=True)]
 
         # Start training
         print("Training model: ")
@@ -83,6 +83,7 @@ class ModelBase(object):
                        batch_size=batch_size,
                        verbose=2,
                        callbacks=callbacks)
+
     def test(self, testing_inputs, testing_labels, batch_size):
         """
         Testing function

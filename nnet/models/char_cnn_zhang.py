@@ -4,9 +4,7 @@ from keras.layers import MaxPooling1D
 from keras.layers import Embedding
 from keras.layers import ThresholdedReLU
 from keras.layers import Dropout
-import keras.metrics as metrics
 from .model_base import ModelBase
-
 
 
 class CharCNNZhang(ModelBase):

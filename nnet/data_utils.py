@@ -2,13 +2,14 @@ import numpy as np
 import re
 import csv
 
+
 class Data(object):
     """
     Class to handle loading and processing of raw datasets.
     """
 
-    def __init__(self, data_source, y_dict= {"c": 0, "e": 1, "i": 2, "o": 3, "p": 4},
-                 alphabet="abcdefghijklmnopqrstuvwxyz0123456789-,;.!?:'\"/\\|_@#$%^&*~`+-=<>()[]{}",
+    def __init__(self, data_source, y_dict={"c": 0, "e": 1, "i": 2, "o": 3, "p": 4},
+                 alphabet=" abcdefghijklmnopqrstuvwxyz0123456789-,;.!?:'\"/\\|_@#$%^&*~`+-=<>()[]{}",
                  input_size=256, num_of_classes=5):
 
         self.alphabet = alphabet
@@ -36,6 +37,7 @@ class Data(object):
                 txt = re.sub('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+',
                              "URL", txt)
                 data.append((self.y_dict[row[row_label_nbr]], txt))  # format: (label, text)
+
         self.data = np.array(data)
         print("Data loaded from " + self.data_source)
 
@@ -56,8 +58,11 @@ class Data(object):
         classes = []
         for c, s in batch_texts:
             batch_indices.append(self.str_to_indexes(s))
-            c = int(c) - 1
-            classes.append(one_hot[c])
+            classes.append(one_hot[int(c)])
+
+        # print(one_hot[0])
+        # print(one_hot[1])
+        # print(count)
         return np.asarray(batch_indices, dtype='int64'), np.asarray(classes)
 
     def str_to_indexes(self, s):
@@ -79,6 +84,3 @@ class Data(object):
             if c in self.dict:
                 str2idx[i - 1] = self.dict[c]
         return str2idx
-
-
-
