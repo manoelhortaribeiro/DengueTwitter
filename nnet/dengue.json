@@ -2,11 +2,11 @@
   "notes": "default",
   "data": {
     "alphabet": " abcdefghijklmnopqrstuvwxyz0123456789-,;.!?:'\"/\\|_@#$%^&*~`+-=<>()[]{}",
-    "alphabet_size": 66,
+    "alphabet_size": 70,
     "input_size": 200,
     "num_of_classes": 5,
-    "training_data_source": "./data/dengue/xx01",
-    "validation_data_source": "./data/dengue/xx00"
+    "training_data_source": "./data/dengue/xaa",
+    "validation_data_source": "./data/dengue/xab"
   },
   "model": "char_cnn_zhang",
   "training": {

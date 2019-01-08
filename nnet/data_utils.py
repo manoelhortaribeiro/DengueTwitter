@@ -29,6 +29,8 @@ class Data(object):
             rdr = csv.reader(f, delimiter='\t', quotechar='"')
             header = True
             for row in rdr:
+                if len(row) != 4:
+                    print(len(row), row)
                 if header:
                     header = False
                     continue
