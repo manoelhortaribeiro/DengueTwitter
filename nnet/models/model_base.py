@@ -37,9 +37,9 @@ class ModelBase(object):
         self.model = model
         self.model.summary()
 
-    def train(self, training_inputs, training_labels,
-              validation_inputs, validation_labels,
-              epochs, batch_size):
+    def train(self, training_inputs, training_labels, validation_inputs, validation_labels, epochs, batch_size,
+              last_path='./nnet/logs/backup_model_last.hdf5', best_path="./nnet/logs/backup_model_best.hdf5"
+              ):
         """
         Training function
 
@@ -71,8 +71,7 @@ class ModelBase(object):
         callbacks += [TensorBoard(log_dir='./nnet/logs/', batch_size=batch_size, write_graph=False),
                       CSVLogger('training.log', append=False)]  # Change append to true if continuing training
         # Save the BEST and LAST model
-        callbacks += [ModelCheckpoint('./nnet/logs/backup_model_last.hdf5'),
-                      ModelCheckpoint('./nnet/logs/backup_model_best.hdf5', save_best_only=True)]
+        callbacks += [ModelCheckpoint(last_path), ModelCheckpoint(best_path, save_best_only=True)]
 
         # Start training
         print("Training model: ")

@@ -62,9 +62,6 @@ class Data(object):
             batch_indices.append(self.str_to_indexes(s))
             classes.append(one_hot[int(c)])
 
-        # print(one_hot[0])
-        # print(one_hot[1])
-        # print(count)
         return np.asarray(batch_indices, dtype='int64'), np.asarray(classes)
 
     def str_to_indexes(self, s):

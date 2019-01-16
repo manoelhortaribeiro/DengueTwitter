@@ -5,8 +5,7 @@
     "alphabet_size": 70,
     "input_size": 200,
     "num_of_classes": 5,
-    "training_data_source": "./data/dengue/xaa",
-    "validation_data_source": "./data/dengue/xab"
+    "data_source": "./data/dengue/classificados_all.tsv"
   },
   "model": "char_cnn_zhang",
   "training": {

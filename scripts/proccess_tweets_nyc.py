@@ -5,13 +5,7 @@ import json
 import re
 
 
-def match_all(text, keywords):
-    for keyword in keywords:
-        matches = re.findall(keyword, text.lower())
-        if len(matches) > 0:
-            return True
-    return False
-
+{}
 
 path = "./data/tweets_processados.tsv"
 rows = ["idx", "nbr1", "nbr2", "position", "nbr3", "nbr4", "nbr5", "text"]
