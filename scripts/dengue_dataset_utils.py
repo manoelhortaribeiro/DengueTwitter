@@ -2,6 +2,7 @@ import numpy as np
 import ntpath
 import re
 
+
 def str_to_indexes(s, length, dict_alphabet):
     s = s.lower()
     max_length = min(len(s), length)
