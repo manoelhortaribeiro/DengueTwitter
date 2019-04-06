@@ -3,7 +3,7 @@
 
 ## Overview of the Pipeline
 
-![https://github.com/manoelhortaribeiro/GeoDiseaseTwitter/blob/master/data_pipeline.jpg?raw=true]()
+![](https://github.com/manoelhortaribeiro/GeoDiseaseTwitter/blob/master/data_pipeline.jpg?raw=true])
 
 ## Instructions
 
